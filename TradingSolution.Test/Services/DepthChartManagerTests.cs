@@ -14,6 +14,7 @@ public class DepthChartTests
     private NFLPlayer _player1 = new NFLPlayer("Ash", 1, null);
     private NFLPlayer _player2 = new NFLPlayer("Bob", 2, null);
     private NFLPlayer _player3 = new NFLPlayer("Chris", 3, null);
+    private NFLPlayer _player4 = new NFLPlayer("Dan", 4, null);
     [Fact]
     public void AddPlayerToDepthChart_AddsPlayerAtCorrectDepth()
     {
@@ -25,18 +26,23 @@ public class DepthChartTests
         // Act
         DepthChartManager.AddPlayerToDepthChart(_position, _player2, 2);
         DepthChartManager.AddPlayerToDepthChart(_position, _player3, null); // Adds to the end
+        DepthChartManager.AddPlayerToDepthChart(_position, _player4, 0); // Adds to the end after player3
+
 
         // Assert
         var players = DepthChart.Instance.Chart[_position];
-        Assert.Equal(3, players.Count);
+        Assert.Equal(4, players.Count);
         Assert.NotNull(players.First);
         Assert.Equal(_player1, players.First.Value.Player); // Ash at position 1
         Assert.Equal(1, players.First.Value.Depth);
         Assert.Equal(_player2, players.Skip(1).FirstOrDefault().Player); // Bob at position 2
         Assert.Equal(2, players.Skip(1).FirstOrDefault().Depth);
-        Assert.Equal(_player3, players.Skip(2).FirstOrDefault().Player); // Chris added to the end
+        Assert.Equal(_player3, players.Skip(2).FirstOrDefault().Player); // Chris at position 3
         Assert.Equal(3, players.Skip(2).FirstOrDefault().Depth);
+        Assert.Equal(_player4, players.Skip(3).FirstOrDefault().Player); // Dan added to the end
+        Assert.Equal(4, players.Skip(3).FirstOrDefault().Depth);
     }
+
 
     [Fact]
     public void AddPlayerToDepthChart_InsertsPlayerAndShiftsOthers()
