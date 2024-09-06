@@ -26,7 +26,7 @@ Clone the repository to your current location:
 2. Locate Solution tab on the left side of VS Code.
 3. (Optional) Configure to use your prefered http port number from TradingSolution -> Properties -> launchSettings.json
 4. In the Solution Explorer, right click TradingSolution and select Run
-5. Once it's up and running, open this link from browser http://localhost:[port-number]/swagger/index.html" where port-number is configured in launchSettings.json
+5. Once it's up and running, open this link from browser http://localhost:[port-number]/swagger/index.html where port-number is configured in launchSettings.json
 
 Alternatively, within TradingSolution main project, run
 ```bash
