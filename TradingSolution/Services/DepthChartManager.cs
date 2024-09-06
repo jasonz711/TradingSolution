@@ -37,8 +37,10 @@ public class DepthChartManager
                 throw new ArgumentException("Player exists");
             }
         }
-
-        positionDepth ??= (s_chart[position].Last == null ? 0: s_chart[position].Last().Depth + 1);
+        if (positionDepth == null || positionDepth <= 0)
+        {
+            positionDepth = s_chart[position].Last == null ? 1 : s_chart[position].Last().Depth + 1;
+        }
 
         var players = s_chart[position];
         var insertPoint = FindInsertPoint(players, (int)positionDepth);
