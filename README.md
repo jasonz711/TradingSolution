@@ -1,8 +1,6 @@
 # Trading Solution
 Trading Solution is a .net web API project that manages sport players and depth chart.
 
-This solution is for a coding challenge.
-
 ## Getting Started
 
 ### Prerequisites
